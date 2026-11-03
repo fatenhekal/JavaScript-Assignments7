@@ -1,4 +1,4 @@
-import { asyncHandler } from '../../common/utils/asyncHandler.js';
+import { asyncHandler } from '../../common/utils/handler.js';
 import * as service from './note.service.js';
 
 export const createNote = asyncHandler(async (req, res) => {

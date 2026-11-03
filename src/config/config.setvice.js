@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 import path from 'node:path';
 
-dotenv.config({ path: path.resolve('.env.development') });
+dotenv.config({ path: path.resolve('.env.developmet') });
 
 export const PORT = process.env.PORT || 3000;
 export const DB_URI = process.env.DB_URI;

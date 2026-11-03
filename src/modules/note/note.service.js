@@ -1,7 +1,7 @@
 import { Types } from 'mongoose';
 import { User, Note } from '../../db/model/index.js';
-import { AppError } from '../../common/utils/AppError.js';
-import { assertObjectId, escapeRegex } from '../../common/utils/validators.js';
+import { AppError } from '../../common/utils/error.js';
+import { assertObjectId, escapeRegex } from '../../common/utils/validation.js';
 
 //  note login 
 const getOwnedNote = async (noteId, userId) => {

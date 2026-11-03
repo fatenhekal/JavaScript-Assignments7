@@ -1,6 +1,6 @@
 import express from 'express';
-import { PORT } from './config/config.service.js';
-import connectDB from './db/connect.js';
+import { PORT } from './config/config.setvice.js';
+import connectDB from './db/connection.js';
 import { userRouter, noteRouter } from './modules/index.js';
 
 const app = express();

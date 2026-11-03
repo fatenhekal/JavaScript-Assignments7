@@ -1,4 +1,4 @@
-import { AppError } from './AppError.js';
+import { AppError } from './error.js';
 
 export const assertObjectId = (id, label = 'id') => {
   if (!/^[a-f\d]{24}$/i.test(String(id ?? ''))) {

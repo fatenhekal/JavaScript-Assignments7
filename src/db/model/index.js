@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import { User } from './user.js';
 
 const noteSchema = new mongoose.Schema(
   {
@@ -27,3 +28,5 @@ const noteSchema = new mongoose.Schema(
 );
 
 export const Note = mongoose.model('Note', noteSchema);
+
+export { User };

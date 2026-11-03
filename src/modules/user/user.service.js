@@ -1,6 +1,6 @@
 import { User, Note } from '../../db/model/index.js';
-import { AppError } from '../../common/utils/AppError.js';
-import { assertObjectId } from '../../common/utils/validators.js';
+import { AppError } from '../../common/utils/error.js';
+import { assertObjectId } from '../../common/utils/validation.js';
 import { hash, compareHash, encrypt } from '../../common/utils/security.js';
 
 // 1) Signup
