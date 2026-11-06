@@ -1,27 +1,37 @@
-import express from 'express';
-import { PORT } from './config/config.setvice.js';
-import connectDB from './db/connection.js';
-import { userRouter, noteRouter } from './modules/index.js';
+import express from "express";
+import config from "./config/config.setvice.js";
+import { connectDB } from "./database/connection.js";
+import apiRoutes from "./module/index.js";
+import { errorHandler } from "./common/middelware/error-handler.js";
 
 const app = express();
+const port = config.port;
+
 app.use(express.json());
 
-app.use('/users', userRouter);
-app.use('/notes', noteRouter);
-
-app.use((req, res) => res.status(404).json({ message: 'Route not found' }));
-
-// global error handler
-app.use((err, req, res, next) => {
-  if (err.code === 11000) return res.status(409).json({ message: 'Email already exists.' });
-  if (err.name === 'ValidationError') {
-    const message = Object.values(err.errors).map((e) => e.message).join(', ');
-    return res.status(400).json({ message });
-  }
-  if (err.name === 'CastError') return res.status(400).json({ message: `Invalid ${err.path}` });
-  if (err.type === 'entity.parse.failed') return res.status(400).json({ message: 'Invalid JSON body' });
-  res.status(err.status || 500).json({ message: err.message || 'Something went wrong' });
+app.get("/", (req, res) => {
+    res.status(200).json({
+        message: "Sticky Notes API is running"
+    });
 });
 
-await connectDB();
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.use(apiRoutes);
+app.use(errorHandler);
+
+const startServer = async () => {
+    if (!config.jwtSecret) {
+        throw new Error("JWT_SECRET must be configured before starting the application.");
+    }
+
+    await connectDB();
+    app.listen(port, () => {
+        console.log(`Server is running on port ${port}`);
+    });
+};
+
+startServer().catch((error) => {
+    const message = error instanceof Error ? error.message : String(error);
+    const safeMessage = message.replace(/mongodb(?:\+srv)?:\/\/[^\s"'<>]+/gi, "mongodb+srv://[redacted]");
+    console.error("Failed to start the application:", safeMessage);
+    process.exitCode = 1;
+});

@@ -1,9 +1,10 @@
-import dotenv from 'dotenv';
-import path from 'node:path';
+import { config as loadEnv } from "dotenv";
+import { resolve } from "node:path";
+const envFilePath = resolve(`.env.${process.env.NODE_ENV}`);
+loadEnv({ path: envFilePath });
 
-dotenv.config({ path: path.resolve('.env.developmet') });
-
-export const PORT = process.env.PORT || 3000;
-export const DB_URI = process.env.DB_URI;
-export const SALT_ROUNDS = Number(process.env.SALT_ROUNDS) || 10;
-export const ENCRYPTION_KEY = process.env.ENCRYPTION_KEY;
+export default {
+    port: Number(process.env.PORT || process.env.port) || 3000,
+    dbUri: process.env.DB_URI || process.env.DB_uri,
+    jwtSecret: process.env.JWT_SECRET
+};
