@@ -6,6 +6,13 @@ import { userRouter, noteRouter } from './modules/index.js';
 const app = express();
 app.use(express.json());
 
+app.get('/', (req, res) => {
+  res.json({
+    message: 'Sticky Notes API is running',
+    routes: ['/users', '/notes'],
+  });
+});
+
 app.use('/users', userRouter);
 app.use('/notes', noteRouter);
 
