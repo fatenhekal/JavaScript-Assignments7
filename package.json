@@ -4,6 +4,7 @@
   "description": "",
   "main": "src/main.js",
   "scripts": {
+    "start": "cross-env NODE_ENV=production node src/main.js",
     "start:dev": "cross-env NODE_ENV=development node --watch src/main.js",
     "start:prod": "cross-env NODE_ENV=production node src/main.js"
   },
