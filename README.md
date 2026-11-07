@@ -1,10 +1,10 @@
-# Sticky Notes API
+# Assignment 7 API
 
-## Development setup
+## Setup
 
 1. Install dependencies with `npm install`.
-2. Generate a local development configuration with `npm run setup:dev`.
-3. Make sure MongoDB is running. If it is not using the default local URL, update `DB_URI` in `.env.development`.
-4. Start the server with `npm run start:dev`.
+2. Copy `.env.example` to `.env.development` and set your local configuration.
+3. Make sure MongoDB is running and `DB_URI` points to it.
+4. Start the development server with `npm run start:dev`.
 
-The setup command creates a random `JWT_SECRET` in `.env.development`. That file is local and ignored by Git; do not commit it.
+The `.env.development` file is local and ignored by Git. Do not commit credentials or secrets.

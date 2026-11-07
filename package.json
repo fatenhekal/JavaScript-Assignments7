@@ -1,20 +1,22 @@
 {
   "name": "ass7",
   "version": "1.0.0",
-  "description": "",
+  "type": "module",
   "main": "src/main.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=production node src/main.js",
-    "setup:dev": "node scripts/setup-dev.js",
-    "start:dev": "cross-env NODE_ENV=development node --watch src/main.js",
-    "start:prod": "cross-env NODE_ENV=production node src/main.js"
+    "dev": "node --watch src/main.js",
+    "start:dev": "node --watch src/main.js"
   },
-  "license": "ISC",
-  "type": "module",
   "dependencies": {
-    "cross-env": "^10.1.0",
-    "dotenv": "^18.0.9",
-    "express": "^5.3.0",
-    "mongoose": "^9.11.4"
-  }
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^3.0.3",
+    "crypto-js": "^4.2.0",
+    "dotenv": "^16.6.1",
+    "express": "^4.22.3",
+    "mongoose": "^8.24.7"
+  },
+  "description": "",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
